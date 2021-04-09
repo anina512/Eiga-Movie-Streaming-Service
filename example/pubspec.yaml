@@ -1,0 +1,31 @@
+name: flutter_torrent_streamer_example
+description: Demonstrates how to use the flutter_torrent_streamer plugin.
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.2
+  flutter_spinkit: "^4.1.2"
+  google_sign_in: ^4.5.9
+  diacritic: ^0.1.1
+  http: ^0.13.1
+  http_parser: ^4.0.0
+  firebase_auth: ^1.0.3
+  cloud_firestore: ^1.0.4
+  firebase_core: ^1.0.3
+  provider: ^4.3.3
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_torrent_streamer:
+    path: ../
+
+flutter:
+  uses-material-design: true

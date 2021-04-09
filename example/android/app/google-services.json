@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "100513507424",
+    "project_id": "eiga-4d86f",
+    "storage_bucket": "eiga-4d86f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100513507424:android:604ce14ec9838d0b2afb05",
+        "android_client_info": {
+          "package_name": "in.dotapps.plugins.flutter_torrent_streamer_example"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "100513507424-7fgip9bfucc466oesojnlnvdb87durgf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKIhMyHSWbHFVN8Vl1GT0xqZRX25-sHqQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "100513507424-7fgip9bfucc466oesojnlnvdb87durgf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
