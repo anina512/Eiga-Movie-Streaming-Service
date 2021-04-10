@@ -34,10 +34,19 @@ class _HomeState extends State<Home> {
 
   void _populateAllMovies() async {
     final result = await _fetchAllMovies();
-    setState(() {
+    if (result==null){
+      String errorMessage='Movie not found';
+      loading = false;
+      this.isSearching = !this.isSearching;
+      Navigator.pushNamed(context,'/error', arguments: {'errorMessage':errorMessage});
+    }
+    else{
+      setState(() {
       _movielist = result;
       loading = false;
-    });
+      });
+    }
+
   }
   Future<List<Movie>> _fetchAllMovies() async {
     String url = "https://www.omdbapi.com/?s=";
@@ -46,7 +55,16 @@ class _HomeState extends State<Home> {
     if(response.statusCode == 200){
       final result = jsonDecode(response.body);
       Iterable list = result['Search'];
-      return list.map((movie) => Movie.fromJson(movie)).toList();
+      try
+      {
+        loading=false;
+        return list.map((movie) => Movie.fromJson(movie)).toList();
+      }
+      catch(e){
+        setState(() {
+          return null;
+        });
+      }
     }
     else{
       throw Exception("Error Loading Movies");
@@ -56,6 +74,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return loading ? Loading(): Scaffold(
+
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Eiga'),

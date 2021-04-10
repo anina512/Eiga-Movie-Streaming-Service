@@ -9,6 +9,7 @@ import 'package:flutter_torrent_streamer_example/services/auth.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_torrent_streamer_example/shared/loading.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_torrent_streamer_example/screens/error.dart';
 
 
 
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
           '/movie-magnet-links': (context) => MovieLinks(),
           '/loading': (context)=>Loading(),
           '/play-torrent': (context)=> TorrentStreamerView(),
+          '/error':(context)=>Error()
         }
       ),
     )

@@ -40,6 +40,8 @@ class _MovieListState extends State<MovieList> {
     movieTitle = movieTitle.replaceAll(new RegExp(r'[^\w\s]+'),'');
     print(movieTitle);
     final response = await http.get(Uri.parse(url+movieTitle));
+    print(response.body);
+    print('not stuck');
     if(response.statusCode == 200){
       final result = jsonDecode(response.body);
       dynamic list = result.toList();
@@ -64,8 +66,10 @@ class _MovieListState extends State<MovieList> {
               if (loading){Navigator.pushNamed(context, '/loading');}
 
               final result = await _fetchMovieData(movie.imdbID);
+              print('fetched movie data');
               //print(result);
               final links = await _fetchMagnetLinks(result["Title"]);
+              print('fetched links');
               Navigator.pop(context);
               setState(() {
                 loading=false;

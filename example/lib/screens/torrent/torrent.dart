@@ -9,7 +9,6 @@ class TorrentStreamerView extends StatefulWidget {
 }
 
 class _TorrentStreamerViewState extends State<TorrentStreamerView> {
-  TextEditingController _controller;
   String torrentLink;
 
   bool isDownloading = false;
@@ -22,8 +21,6 @@ class _TorrentStreamerViewState extends State<TorrentStreamerView> {
   @override
   void initState() {
     super.initState();
-
-    _controller = TextEditingController();
     _addTorrentListeners();
   }
 
@@ -31,7 +28,6 @@ class _TorrentStreamerViewState extends State<TorrentStreamerView> {
   void dispose() {
     TorrentStreamer.stop();
     TorrentStreamer.removeEventListeners();
-
     super.dispose();
   }
 
