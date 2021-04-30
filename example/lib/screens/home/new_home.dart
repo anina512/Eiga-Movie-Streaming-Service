@@ -82,17 +82,18 @@ class _HomeScreenState extends State<HomeScreen> {
     _context = context;
     var homeIcon = IconButton(
         icon: Icon(
-          Icons.sort, //menu,//dehaze,
+          Icons.sort, //menu
           color: kWhite,
         ),
         onPressed: () {
           _scaffoldKey.currentState.openDrawer();
-
         });
+
     return WillPopScope(
       onWillPop: () {
         return onWillPop(context);
       },
+
       child: Scaffold(
         backgroundColor: kBlack,
           key: _scaffoldKey,
@@ -101,6 +102,9 @@ class _HomeScreenState extends State<HomeScreen> {
               title: StringConst.HOME_TITLE,
               bgColor: kRed,
             actions: [
+          IconButton(
+          icon: Icon(Icons.search_rounded, color: kWhite,), onPressed: () => navigationPush(context, SearchScreen())
+      ),
               FlatButton.icon(
                   onPressed: () async{
                     await _auth.signOut();
@@ -108,11 +112,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   icon: Icon(Icons.person),
                   label: Text('Logout')),
-              IconButton(
-                  icon: Icon(Icons.search_rounded, color: kWhite,), onPressed: () => navigationPush(context, SearchScreen()))
                       ],
               icon: homeIcon,
-          ),
+                  ),
                   drawer: NavDrawer(),
 
           body: ScopedModel(model: model, child: _createUi())),
@@ -176,7 +178,7 @@ String getTitle(String apiName) {
     case ApiConstant.POPULAR_MOVIES:
       return 'Popular Movies';
     case ApiConstant.GENRES_LIST:
-      return 'Geners';
+      return 'Genres';
     case ApiConstant.TRENDING_MOVIE_LIST:
       return 'Trending Movies';
     case ApiConstant.DISCOVER_MOVIE:

@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/movie-detail': (context) => MovieDetail(),
           '/movie-magnet-links': (context) => MovieLinks(),
-          '/loading': (context)=>HomeScreen(),
+          '/loading': (context)=>Loading(),
           '/play-torrent': (context)=> TorrentStreamerView(),
           '/error':(context)=>Error(),
           '/login':(context) => LoginForm(),

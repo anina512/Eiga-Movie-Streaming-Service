@@ -18,12 +18,17 @@ import 'package:flutter_torrent_streamer_example/widgets/video_view.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:intl/intl.dart';
+import 'dart:convert';
+import 'package:diacritic/diacritic.dart';
+import 'package:http/http.dart' as http;
+
 class DetailsMovieScreen extends StatefulWidget {
   final apiName;
   final tag;
   final index;
   final movieId;
   final image, movieName;
+
 
   DetailsMovieScreen(this.movieName, this.image, this.apiName, this.index,
       this.movieId, this.tag);
@@ -57,7 +62,48 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
     model.movieVideo(movieId);
     model.movieImg(movieId);
   }
-
+  //Magnet Link
+ bool loading=false;
+  List magnetLinkList = [];
+  Future<List> _fetchMagnetLinks(String movieTitle) async {
+    String url = "https://apibay.org/q.php?q=";
+    movieTitle = removeDiacritics(movieTitle);
+    movieTitle = movieTitle.replaceAll(new RegExp(r'[^\w\s]+'),'');
+    print(movieTitle);
+    final response = await http.get(Uri.parse(url+movieTitle));
+    print(response.body);
+    print('not stuck');
+    if(response.statusCode == 200){
+      final result = jsonDecode(response.body);
+      dynamic list = result.toList();
+      return list;
+    }
+    else{
+      throw Exception("Error Loading Magnet Links");
+    }
+  }
+  List _generateMagnetLinksFromInfoHash(List torrentList){
+    List allMagnetLinks = [];
+    int maxEntries = torrentList.length<10 ? torrentList.length : 10;
+    for (int i= 0; i<maxEntries; i++)
+    {
+      Map magnetLinkList = {};
+      Map torrentEntry = torrentList[i];
+      String name = torrentEntry["name"];
+      String info_hash = torrentEntry["info_hash"];
+      name = name.replaceAll(" ", "%");
+      //Magnet Link Format
+      String magnetLink = ("magnet:?xt=urn:btih:"+ info_hash + "&dn="+ name + "&tr=http%3A%2F%2F125.227.35.196%3A6969%2Fannounce&tr=http%3A%2F%2F210.244.71.25%3A6969%2Fannounce&tr=http%3A%2F%2F210.244.71.26%3A6969%2Fannounce&tr=http%3A%2F%2F213.159.215.198%3A6970%2Fannounce&tr=http%3A%2F%2F37.19.5.139%3A6969%2Fannounce&tr=http%3A%2F%2F37.19.5.155%3A6881%2Fannounce&tr=http%3A%2F%2F46.4.109.148%3A6969%2Fannounce&tr=http%3A%2F%2F87.248.186.252%3A8080%2Fannounce&tr=http%3A%2F%2Fasmlocator.ru%3A34000%2F1hfZS1k4jh%2Fannounce&tr=http%3A%2F%2Fbt.evrl.to%2Fannounce&tr=http%3A%2F%2Fbt.rutracker.org%2Fann&tr=https%3A%2F%2Fwww.artikelplanet.nl&tr=http%3A%2F%2Fmgtracker.org%3A6969%2Fannounce&tr=http%3A%2F%2Fpubt.net%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.baravik.org%3A6970%2Fannounce&tr=http%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.filetracker.pl%3A8089%2Fannounce&tr=http%3A%2F%2Ftracker.grepler.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.mg64.net%3A6881%2Fannounce&tr=http%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.torrentyorg.pl%2Fannounce&tr=https%3A%2F%2Finternet.sitelio.me%2F&tr=https%3A%2F%2Fcomputer1.sitelio.me%2F&tr=udp%3A%2F%2F168.235.67.63%3A6969&tr=udp%3A%2F%2F182.176.139.129%3A6969&tr=udp%3A%2F%2F37.19.5.155%3A2710&tr=udp%3A%2F%2F46.148.18.250%3A2710&tr=udp%3A%2F%2F46.4.109.148%3A6969&tr=udp%3A%2F%2Fcomputerbedrijven.bestelinks.nl%2F&tr=udp%3A%2F%2Fcomputerbedrijven.startsuper.nl%2F&tr=udp%3A%2F%2Fcomputershop.goedbegin.nl%2F&tr=udp%3A%2F%2Fc3t.org&tr=udp%3A%2F%2Fallerhandelenlaag.nl&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969");
+      magnetLinkList["name"] = torrentEntry["name"];
+      magnetLinkList["leechers"] = torrentEntry["leechers"];
+      magnetLinkList["seeders"] = torrentEntry["seeders"];
+      magnetLinkList["num_of_files"] = torrentEntry["num_files"];
+      magnetLinkList["magnet_link"] = magnetLink;
+      allMagnetLinks.add(magnetLinkList);
+    }
+    return allMagnetLinks;
+  }
+//Magnet Link Code End
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -214,9 +260,34 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
           SizedBox(height: 10),
           _contentAbout(movie),
           SizedBox(height: 10),
+          FlatButton.icon(
+            onPressed: () async
+            {
+              setState(() {
+                loading=true;
+              });
+              if (loading){Navigator.pushNamed(context, '/loading');}
+              final links = await _fetchMagnetLinks(movieName);
+              print('fetched links');
+              magnetLinkList = _generateMagnetLinksFromInfoHash(links);
+              print(magnetLinkList);
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/movie-magnet-links', arguments: {
+                          'magnetLinkList': magnetLinkList,
+                          'movieTitle': movieName,
+                        });
+              setState(() {
+                loading=false;
+              });
+            },
+            icon: Icon(Icons.link),
+            label: Text("GET LINKS!"),
+          ),
+          SizedBox(height: 10),
           getTxtBlackColor(
               msg: 'Overview', fontSize: 18, fontWeight: FontWeight.bold),
-          SizedBox(height: 7),
+          SizedBox(height: 10),
+
           if (movie != null)
             getTxtGreyColor(
                 msg: movie.overview != null ? movie.overview : '',

@@ -117,13 +117,13 @@ class SifiMovieRow extends StatelessWidget {
       return getLargeItem(
           context: context,
           img: ApiConstant.IMAGE_POSTER + item.poster_path,
-          name: item.original_title,
+          name: item.title,
           screenSpace: 80,
           tag: tag,
           onTap: () => navigationPush(
               context,
               DetailsMovieScreen(
-                  item.original_title, img, apiName, index, item.id, tag)));
+                  item.title, img, apiName, index, item.id, tag)));
     } else
       Container(child: getTxt(msg: StringConst.NO_DATA_FOUND));
   }

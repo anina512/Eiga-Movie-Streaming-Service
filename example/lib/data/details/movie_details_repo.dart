@@ -69,7 +69,7 @@ class MovieDetailsRespo {
     id = json['id'];
     imdbId = json['imdb_id'];
     originalLanguage = json['original_language'];
-    originalTitle = json['original_title'];
+    originalTitle = json['title'];
     overview = json['overview'];
     popularity = json['popularity'];
     posterPath = json['poster_path'];

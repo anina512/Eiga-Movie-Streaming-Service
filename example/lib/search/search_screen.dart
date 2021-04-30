@@ -146,7 +146,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 id: data.id,
                 img: data.poster_path.toString(),
                 //"/yGSxMiF0cYuAiyuve5DA6bnWEOI.jpg",
-                name: data.original_title,
+                name: data.title,
                 desc: data.overview,
                 vote: data.vote_average);
           }),

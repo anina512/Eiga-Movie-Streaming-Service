@@ -41,17 +41,17 @@ class CarouselView extends StatelessWidget {
   }
 
   Widget getSliderItem(BuildContext context, int itemIndex, NowPlayResult result) {
-    String tag = result.original_title + "Carosal" + itemIndex.toString();
+    String tag = result.title + "Carosal" + itemIndex.toString();
     String img = ApiConstant.IMAGE_POSTER + result.poster_path;
     return fullListImage(
-        name: result.original_title,
+        name: result.title,
         image: img,
         tag: tag,
         onTap: () {
           navigationPush(
             context,
-            DetailsMovieScreen(result.original_title, img,
-                result.original_title, itemIndex, result.id, tag),
+            DetailsMovieScreen(result.title, img,
+                result.title, itemIndex, result.id, tag),
           );
         });
   }

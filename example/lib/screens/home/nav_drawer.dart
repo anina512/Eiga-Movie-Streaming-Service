@@ -34,56 +34,32 @@ class NavDrawer extends StatelessWidget {
               physics: BouncingScrollPhysics(),
               child: Column(
                 children: <Widget>[
-                  Container(
-                    alignment: Alignment.centerRight,
-                    child: IconButton(
-                        icon: Icon(
-                          Icons.close,
-                        ),
-                        onPressed: () => Navigator.of(_context).pop()),
-                  ),
-                  InkWell(
-                    onTap: () => _navigateOnNextScreen('Profile'),
-                    child: Container(
-                      height: 128,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          gradient: LinearGradient(colors: [
-                            Colors.redAccent,
-                            Colors.blueGrey
-                          ])),
-                      child: CircleAvatar(
-                        radius: 60,
-                        //backgroundImage: NetworkImage(ApiConstant.DEMO_IMG),
+                  Row(
+                    children: [
+                      Text(
+                        "Menu", style: TextStyle(letterSpacing: 1.0, fontSize: 20.0, fontWeight: FontWeight.w800),
                       ),
-                    ),
+                      SizedBox(width: 125.0),
+                      Container(
+                        child: IconButton(
+                            alignment: Alignment.centerRight,
+                            icon: Icon(
+                              Icons.close,
+                            ),
+                            onPressed: () => Navigator.of(_context).pop()),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 5.0),
-                  SizedBox(height: 30.0),
                   _buildRow(Icons.home, "Home"),
                   _buildDivider(),
                   _buildRow(Icons.category, "Category"),
                   _buildDivider(),
-                  _buildRow(Icons.local_movies, "Trending Movie",
-                      showBadge: true),
+                  _buildRow(Icons.local_movies, "Trending Movie"),
                   _buildDivider(),
-                  _buildRow(Icons.movie_filter, "Popular Movie",
-                      showBadge: false),
+                  _buildRow(Icons.movie_filter, "Popular Movie"),
                   _buildDivider(),
-                  _buildRow(Icons.movie, "Upcoming Movie", showBadge: true),
-                  _buildDivider(),
-                  _buildRow(Icons.person_pin, "Profile"),
-                  _buildDivider(),
-                  _buildRow(Icons.settings, "Settings"),
-                  _buildDivider(),
-                  _buildRow(Icons.share, "Share App"),
-                  _buildDivider(),
-                  _buildRow(Icons.feedback, "Feedback"),
-                  _buildDivider(),
-                  _buildRow(Icons.help, "Help us"),
-                  _buildDivider(),
-                  _buildRow(Icons.supervised_user_circle, "Invite Friend"),
+                  _buildRow(Icons.movie, "Upcoming Movie"),
                   _buildDivider(),
                   _buildRow(Icons.info_outline, "About us"),
                   _buildDivider(),
