@@ -95,6 +95,7 @@ class _TorrentStreamerViewState extends State<TorrentStreamerView> {
   Future<void> _openVideo(BuildContext context) async {
     if (isCompleted) {
       await TorrentStreamer.launchVideo();
+
     } else {
       showDialog(
           builder: (BuildContext context) {

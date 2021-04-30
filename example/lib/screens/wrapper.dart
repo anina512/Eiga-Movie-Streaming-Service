@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_torrent_streamer_example/models/user.dart';
+import 'package:flutter_torrent_streamer_example/like_movie/movie_like.dart';
+
 import 'package:flutter_torrent_streamer_example/screens/authenticate/authenticate.dart';
 import 'package:flutter_torrent_streamer_example/screens/home/home.dart';
 import 'package:flutter_torrent_streamer_example/services/auth.dart';
@@ -15,7 +17,7 @@ class Wrapper extends StatelessWidget {
       return Authenticate();
     }
     else{
-      return Home();
+      return MovieLikeScreen();
     }
   }
 }

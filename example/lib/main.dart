@@ -10,8 +10,11 @@ import 'package:provider/provider.dart';
 import 'package:flutter_torrent_streamer_example/shared/loading.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_torrent_streamer_example/screens/error.dart';
-
-
+import 'package:flutter_torrent_streamer_example/screens/home/new_home.dart';
+import 'package:flutter_torrent_streamer_example/screens/onboarding/onboarding.dart';
+import 'package:splashscreen/splashscreen.dart';
+import 'package:flutter_torrent_streamer_example/screens/login/widgets/login_form.dart';
+import 'constant.dart';
 
 
 void main() async {
@@ -29,18 +32,41 @@ class MyApp extends StatelessWidget {
     return StreamProvider<Users>.value(
       value: AuthService().user,
       child: MaterialApp(
-        home: Wrapper(),
+        home: Splash2(),
         routes: {
           '/movie-detail': (context) => MovieDetail(),
           '/movie-magnet-links': (context) => MovieLinks(),
-          '/loading': (context)=>Loading(),
+          '/loading': (context)=>HomeScreen(),
           '/play-torrent': (context)=> TorrentStreamerView(),
-          '/error':(context)=>Error()
+          '/error':(context)=>Error(),
+          '/login':(context) => LoginForm(),
+          '/home': (context)=>HomeScreen(),
+          '/auth': (context) => Wrapper(),
         }
       ),
-    )
+    );
+  }
+}
+class Splash2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SplashScreen(
+      seconds: 5,
+      backgroundColor: kBlack,
+      title:new Text('Eiga.',style: TextStyle(color:kRed,fontSize: 130,fontFamily:'Pacifico',),),
+      //image: Image.asset('assets/images/popcorn.gif'),
+      navigateAfterSeconds: Builder(
+          builder: (BuildContext context) {
+            var screenHeight = MediaQuery.of(context).size.height;
+            return Onboarding(
+              screenHeight: screenHeight,
+            );
+          }
+      ),
 
-    ;
+      photoSize: 100.0,
+      loaderColor: kRed,
+    );
   }
 }
 

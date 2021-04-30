@@ -21,7 +21,6 @@ class _ErrorState extends State<Error> {
         body:Container(
             padding: EdgeInsets.symmetric(vertical: 20,horizontal: 130),
           child:Column(
-
             children: <Widget>[
               SizedBox(height: 40,),
               Text(errorMessage,style: TextStyle(fontSize: 25,),textAlign: TextAlign.center,)

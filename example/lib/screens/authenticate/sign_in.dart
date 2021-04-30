@@ -3,6 +3,8 @@ import 'package:flutter_torrent_streamer_example/screens/authenticate/register.d
 import 'package:flutter_torrent_streamer_example/services/auth.dart';
 import 'package:flutter_torrent_streamer_example/shared/constants.dart';
 import 'package:flutter_torrent_streamer_example/shared/loading.dart';
+import 'package:flutter_torrent_streamer_example/constant.dart';
+
 
 
 
@@ -12,7 +14,6 @@ class SignIn extends StatefulWidget {
   @override
   _SignInState createState() => _SignInState();
 }
-
 class _SignInState extends State<SignIn> {
 
   final AuthService _auth=AuthService();
@@ -27,114 +28,146 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return loading? Loading():Scaffold(
-      backgroundColor: Colors.grey,
+      resizeToAvoidBottomInset: false,
+      backgroundColor: kBlack,
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: kBlack,
         elevation: 0,
-        title: Text('Sign In to Ongaku'),
-        actions: [
-          FlatButton.icon(
-              onPressed: (){
-                widget.toggleView();
-              },
-              icon: Icon(Icons.person),
-              label: Text('Register'))
-        ],
+        brightness: Brightness.dark,
+        leading:
+        IconButton(onPressed: (){
+          Navigator.pop(context);
+        },
+            icon:Icon(Icons.arrow_back_ios,size:20,color:kRed,)),
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20,horizontal: 50),
-        child: Form(
-          key: _formKey,
-          child: SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(),
-              child: Column(
-                children: <Widget>[
-                  SizedBox(height: 20,),
-                  TextFormField(
-                      decoration:textInputDecor.copyWith(hintText: 'Email'),
-                      validator: (val)=>val.isEmpty? 'Enter Email':null,
-                      onChanged: (val){
-                        setState(() {
-                          return email=val;
-                      });
-                    }
-                  ),
-                  SizedBox(height: 20),
-                  TextFormField(
-                    decoration:textInputDecor.copyWith(hintText: 'Password'),
-                    validator: (val)=>val.length<6? 'Enter a password with 6 or more characters':null,
-                    obscureText: true,
-                    onChanged: (val){
-                      setState(() {
-                        return password=val;
-                      });
-
-                    },
-                  ),
-                  SizedBox(height: 20),
-                  RaisedButton(
-                      onPressed: ()async{
-                        if(_formKey.currentState.validate()){
-                          setState(() {
-                            return loading=true;
-                          });
-
-                          dynamic result=await _auth.signInEmail(email, password);
-                          if(result==null){
-                            setState(() {
-                              error='Invalid credentials';
-                              loading=false;
-                            });
-                          }
-                        }
-
-                      },
-                      color: Colors.blue,
-                      child: Text(
-                          'Sign In',
-                          style: TextStyle(color: Colors.white),
-                      ),
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                    error,
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 14
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  Text('OR'),
-                  SizedBox(height: 20),
-                  RaisedButton(
-                    onPressed: ()async{
-                      setState(() {
-                        loading=true;
-                      });
-                        dynamic result=await _auth.signInGoogle();
-                        print(result.uid);
-                        if(result==null) {
-                          setState(() {
-                            error = 'Invalid credentials';
-                            loading=false;
-                          });
-                        }
-                      },
-                    color: Colors.blue,
-                    child: Text(
-                      'Sign In With Google',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-
+          height: MediaQuery.of(context).size.height,
+          width: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Column(
+                children: [
+                  Text("Login",style:TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color:kRed,
+                  ),),
+                  SizedBox(height:20,),
+                  Text("Welcome back.Login with your credentials",style:
+                  TextStyle(
+                      fontSize: 15,
+                      color: kWhite
+                  ),),
                 ],
-
-
               ),
-            ),
-          ),
-        ),
+              Padding(
+                  padding:EdgeInsets.symmetric(
+                      horizontal:40
+                  ),
+                  child:Form(
+                      key: _formKey,
+                      child:SingleChildScrollView(
+                          child:ConstrainedBox(
+                              constraints: BoxConstraints(),
+                              child: Column(
+                                children: <Widget>[
+                                  SizedBox(height:20,),
+                                  TextFormField(
+                                      decoration:textInputDecor.copyWith(hintText: 'Email'),
+                                      validator: (val)=>val.isEmpty? 'Enter Email':null,
+                                      onChanged: (val){
+                                        setState(() {
+                                          return email=val;
+                                        });
+                                      }
+                                  ),
+                                  SizedBox(height: 20),
+                                  TextFormField(
+                                    decoration:textInputDecor.copyWith(hintText: 'Password'),
+                                    validator: (val)=>val.length<6? 'Enter a password with 6 or more characters':null,
+                                    obscureText: true,
+                                    onChanged: (val){
+                                      setState(() {
+                                        return password=val;
+                                      });
+
+                                    },
+                                  ),
+                                  SizedBox(height: 20),
+                                  MaterialButton(
+                                    minWidth: double.infinity,
+                                    height: 60,
+                                    onPressed: ()async{
+                                      if(_formKey.currentState.validate()){
+                                        setState(() {
+                                          return loading=true;
+                                        });
+                                        print('nisu');
+                                        dynamic result=await _auth.signInEmail(email, password);
+                                        if(result==null){
+                                          setState(() {
+                                            error='Invalid credentials';
+                                            loading=false;
+                                          });
+                                        }
+                                      }
+
+                                    },
+                                    color: kRed,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(40)
+                                    ),
+                                    child: Text("Login",style:TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 16,
+                                      color:kWhite,
+
+                                    ),),
+
+                                  ),
+                                  SizedBox(height: 20),
+                                  Text(
+                                    error,
+                                    style: TextStyle(
+                                        color: Colors.red,
+                                        fontSize: 14
+                                    ),
+                                  ),
+                                  SizedBox(height: 20),
+                                  Text('Dont have an account ?',style: TextStyle(
+                                    color:kWhite,
+                                    fontSize:20,
+                                  )),
+                                  SizedBox(height: 20),
+                                  MaterialButton(
+                                    minWidth: double.infinity,
+                                    height: 60,
+                                    onPressed: (){
+                                      widget.toggleView();
+                                    },
+                                    color: kWhite,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(40)
+                                    ),
+                                    child: Text("Sign Up",style:TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 16,
+                                      color:kRed,
+
+                                    ),),
+
+                                  ),
+
+                                ],
+                              )
+
+                          )
+                      )
+                  )
+              )
+            ],
+          )
       ),
     );
   }
