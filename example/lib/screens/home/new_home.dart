@@ -80,6 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     _context = context;
+
     var homeIcon = IconButton(
         icon: Icon(
           Icons.sort, //menu
@@ -115,9 +116,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
               icon: homeIcon,
                   ),
-                  drawer: NavDrawer(),
+          drawer: NavDrawer(),
+
 
           body: ScopedModel(model: model, child: _createUi())),
+
+
+
     );
   }
 
@@ -142,6 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
               TrandingMovieRow(apiName: ApiConstant.DISCOVER_MOVIE),
               TrandingPerson(),
               TrandingMovieRow(apiName: ApiConstant.TOP_RATED),
+
             ],
           ),
         ),

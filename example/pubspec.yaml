@@ -35,6 +35,7 @@ dependencies:
 
 
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -51,3 +52,5 @@ flutter:
   assets:
     - assets/images/popcorn.gif
     - assets/images/help.jpg
+    - assets/images/download.png
+    - assets/images/dmovie.png

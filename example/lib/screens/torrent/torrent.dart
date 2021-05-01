@@ -1,5 +1,8 @@
+
+
 import 'package:flutter_torrent_streamer/flutter_torrent_streamer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_torrent_streamer_example/constant.dart';
 
 
 
@@ -132,12 +135,14 @@ class _TorrentStreamerViewState extends State<TorrentStreamerView> {
 
   Widget _buildInput(BuildContext context) {
     return Column(
+
       children: <Widget>[
+
         Row(
           children: <Widget>[
             RaisedButton(
-              child: Text('Download'),
-              color: Colors.blue,
+              child: Text('Download',style: TextStyle(color:kWhite),),
+              color: kBlack,
               onPressed: _startDownload,
             ),
             SizedBox(width: 20),
@@ -147,7 +152,8 @@ class _TorrentStreamerViewState extends State<TorrentStreamerView> {
             ),
           ],
           mainAxisAlignment: MainAxisAlignment.center,
-        )
+        ),
+        SizedBox(height:70),
       ],
     );
   }
@@ -165,27 +171,30 @@ class _TorrentStreamerViewState extends State<TorrentStreamerView> {
       }
 
       return Column(
+        children: <Widget>[
+          Text(statusText,style:TextStyle(fontWeight: FontWeight.bold),),
+          LinearProgressIndicator(
+              backgroundColor: kBlack,
+              valueColor: new AlwaysStoppedAnimation<Color>(kRed),
+              value: !isFetchingMeta ? progress / 100 : null
+          ),
+          Row(
             children: <Widget>[
-              Text(statusText),
-              LinearProgressIndicator(
-                  value: !isFetchingMeta ? progress / 100 : null
+              RaisedButton(
+                  child: Text('Play Video',style: TextStyle(color:kWhite),),
+                  color: kBlack,
+                  onPressed: isStreamReady ? () => _openVideo(context) : null
               ),
-              Row(
-                children: <Widget>[
-                  RaisedButton(
-                      child: Text('Play Video'),
-                      color: Colors.blue,
-                      onPressed: isStreamReady ? () => _openVideo(context) : null
-                  ),
-                  OutlineButton(
-                    child: Text('Stop Download'),
-                    onPressed: TorrentStreamer.stop,
-                  ),
-                ],
-                mainAxisAlignment: MainAxisAlignment.center,
-              )
+              SizedBox(width: 20,),
+              OutlineButton(
+                child: Text('Stop Download'),
+                onPressed: TorrentStreamer.stop,
+              ),
             ],
-        );
+            mainAxisAlignment: MainAxisAlignment.center,
+          )
+        ],
+      );
     } else {
       return Container(height: 0, width: 0);
     }
@@ -195,23 +204,44 @@ class _TorrentStreamerViewState extends State<TorrentStreamerView> {
     torrentLinkData= ModalRoute.of(context).settings.arguments;
     torrentLink=torrentLinkData['torrentLink'];
     return Scaffold(
+      backgroundColor: kBlack,
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: kRed,
         elevation: 0,
         title: Text('Download'),
       ),
-      body: Column(
-        children: <Widget>[
-          _buildInput(context),
-          SizedBox(height: 20,),
-          _buildTorrentStatus(context)
-        ],
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
+      body: Card(
+        margin: EdgeInsets.only(top: 30),
+        elevation: 50,
+        shadowColor: Colors.black,
+        color: Colors.redAccent[100],
+        child:SizedBox(
+          width: 500,
+          height: 400,
+
+          child: Padding(
+              padding: const EdgeInsets.all(30.0),
+
+            child: Column(
+
+            children: <Widget>[
+              Image.asset('assets/images/dmovie.png',height: 50,),
+              Text("Click the Download Button to watch your favourite movie.",style:TextStyle(fontWeight: FontWeight.bold),),
+              SizedBox(height:20,),
+              _buildInput(context),
+              SizedBox(height: 20,),
+              _buildTorrentStatus(context)
+            ],
+
+          ),
+        ),
+        ),
       ),
 
-    );
+
+      /**/
+      );
+
   }
 
   bool get isCompleted => progress == 100;
