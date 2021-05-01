@@ -241,7 +241,7 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
               ),
               RatingResult(movie == null ? 0 : movie.voteAverage, 12.0),
               SizedBox(width: 5),
-              RatingBar(
+              RatingBar.builder(
                 itemSize: 12.0,
                 initialRating: movie == null ? 0 : movie.voteAverage / 2,
                 minRating: 1,
@@ -249,7 +249,10 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
                 allowHalfRating: true,
                 itemCount: 5,
                 itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
-
+                itemBuilder: (context, _) => Icon(
+                  Icons.star,
+                  color: Colors.amber,
+                ),
                 onRatingUpdate: (rating) {
                   print(rating);
                 },

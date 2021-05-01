@@ -194,7 +194,7 @@ Widget getMovieItemRow(
 
               RatingResult(vote, 12.0),
               SizedBox(width: 5),
-              RatingBar(
+              RatingBar.builder(
                 itemSize: 12.0,
                 initialRating: vote / 2,
                 minRating: 1,
@@ -202,6 +202,10 @@ Widget getMovieItemRow(
                 allowHalfRating: true,
                 itemCount: 5,
                 itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
+                itemBuilder: (context, _) => Icon(
+                  Icons.star,
+                  color: Colors.amber,
+                ),
                 onRatingUpdate: (rating) {
                   print(rating);
                 },
