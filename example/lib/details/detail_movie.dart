@@ -16,6 +16,7 @@ import 'package:flutter_torrent_streamer_example/widgets/sifi_movie_row.dart';
 import 'package:flutter_torrent_streamer_example/widgets/trending_movie_row.dart';
 import 'package:flutter_torrent_streamer_example/widgets/video_view.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:flutter_torrent_streamer_example/constant.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:intl/intl.dart';
 import 'dart:convert';
@@ -260,8 +261,10 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
           SizedBox(height: 10),
           _contentAbout(movie),
           SizedBox(height: 10),
-          FlatButton.icon(
-            onPressed: () async
+          MaterialButton(
+            minWidth: double.infinity,
+            height: 50,
+            onPressed:  () async
             {
               setState(() {
                 loading=true;
@@ -273,15 +276,26 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
               print(magnetLinkList);
               Navigator.pop(context);
               Navigator.pushNamed(context, '/movie-magnet-links', arguments: {
-                          'magnetLinkList': magnetLinkList,
-                          'movieTitle': movieName,
-                        });
+                'magnetLinkList': magnetLinkList,
+                'movieTitle': movieName,
+              });
               setState(() {
                 loading=false;
               });
             },
-            icon: Icon(Icons.link),
-            label: Text("GET LINKS!"),
+            color:kRed,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(40)
+            ),
+            child: Text("GET LINKS",style:TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 16,
+              color: kWhite,
+
+            ),),
+
+
+
           ),
           SizedBox(height: 10),
           getTxtBlackColor(
@@ -333,6 +347,7 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
                   '${_dataMovie != null ? _dataMovie.budget==0?' N/A':'${budget}' : null}'),
               _contentDescriptionAbout('Revenue',
                   '${_dataMovie != null ? _dataMovie.revenue==0?' N/A':'${revenue}' : null}'),
+
             ],
           ),
           ClipRRect(
