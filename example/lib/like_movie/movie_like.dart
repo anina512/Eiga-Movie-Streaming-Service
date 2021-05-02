@@ -8,7 +8,9 @@ import 'package:flutter_torrent_streamer_example/like_movie/adapt.dart';
 import 'package:flutter_torrent_streamer_example/like_movie/item_like.dart';
 import 'package:flutter_torrent_streamer_example/like_movie/keepalive_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_torrent_streamer_example/services/auth.dart' as auth;
 
+Map genreList;
 class MovieLikeScreen extends StatefulWidget {
   @override
   _MovieLikeScreenState createState() => _MovieLikeScreenState();
@@ -61,9 +63,24 @@ class _MovieLikeScreenState extends State<MovieLikeScreen> {
         backTapped: () => pageController.previousPage(
             duration: Duration(milliseconds: 400), curve: Curves.ease),
         nextTapped: () {
+          for(int i=0; i<genreList.length; i++)
+          {
+            genreList.forEach((k,v) {
+              if (v == true) {
+                if(!auth.custom_user.genres.contains(movieList[k]))
+                  {
+                    if(!auth.custom_user.genres.contains(k))
+                      {
+                        auth.custom_user.genres.add(k);
+                      }
+                  }
+              }
+            }
+            );
+          }
           SPManager.setOnboarding(true);
           navigationPushReplacement(ctx, HomeScreen());
-
+          print(auth.custom_user.genres);
         }),
 
   ];
@@ -196,6 +213,7 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
                             onTap: () {
                               _selected = !_selected;
                               widget.genres[d.value] = _selected;
+                              genreList = widget.genres;
                               setState(() {});
                             },
                             child: Container(
@@ -242,6 +260,7 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
               Expanded(child: SizedBox()),
               GestureDetector(
                   onTap: () async {
+
                     widget.nextTapped();
                   },
                   child: Container(

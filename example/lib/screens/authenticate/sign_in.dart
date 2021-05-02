@@ -103,7 +103,7 @@ class _SignInState extends State<SignIn> {
                                         setState(() {
                                           return loading=true;
                                         });
-                                        print('nisu');
+
                                         dynamic result=await _auth.signInEmail(email, password);
                                         if(result==null){
                                           setState(() {

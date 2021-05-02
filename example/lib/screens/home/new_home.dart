@@ -10,6 +10,7 @@ import 'package:flutter_torrent_streamer_example/screens/login/login.dart';
 import 'package:flutter_torrent_streamer_example/search/search_screen.dart';
 import 'package:flutter_torrent_streamer_example/widgets/caraousel_view.dart';
 import 'package:flutter_torrent_streamer_example/widgets/movie_cate.dart';
+import 'package:flutter_torrent_streamer_example/widgets/movie_recommendations.dart';
 import 'package:flutter_torrent_streamer_example/widgets/sifi_movie_row.dart';
 import 'package:flutter_torrent_streamer_example/widgets/trending_movie_row.dart';
 import 'package:flutter_torrent_streamer_example/widgets/trending_person.dart';
@@ -127,6 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _createUi() {
+    print(ApiConstant.DISCOVER_MOVIE);
     return SafeArea(
       child: Container(
         child: SingleChildScrollView(
@@ -140,11 +142,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 180,
                   width: double.infinity,
                   child: CarouselView()),
+              //MovieRecommendations(),
               TrandingMovieRow(apiName: ApiConstant.TRENDING_MOVIE_LIST),
               MovieCate(),
               TrandingMovieRow(apiName: ApiConstant.POPULAR_MOVIES),
               SifiMovieRow(ApiConstant.UPCOMING_MOVIE),
               TrandingMovieRow(apiName: ApiConstant.DISCOVER_MOVIE),
+
               TrandingPerson(),
               TrandingMovieRow(apiName: ApiConstant.TOP_RATED),
 

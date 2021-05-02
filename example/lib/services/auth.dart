@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_torrent_streamer_example/models/user.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+Users custom_user;
   class AuthService{
 
     final FirebaseAuth _auth= FirebaseAuth.instance;
@@ -21,7 +22,8 @@ import 'package:google_sign_in/google_sign_in.dart';
       try{
         UserCredential result=await _auth.signInAnonymously();
         User user=result.user;
-        return _userFromFirebaseUser(user);
+        custom_user =  _userFromFirebaseUser(user);
+        return custom_user;
       }catch(e){
         print(e.toString());
         return null;
@@ -32,7 +34,8 @@ import 'package:google_sign_in/google_sign_in.dart';
       try{
         UserCredential result=await _auth.signInWithEmailAndPassword(email: email, password: password);
         User user=result.user;
-        return _userFromFirebaseUser(user);
+        custom_user =  _userFromFirebaseUser(user);
+        return custom_user;
       }
       catch(e){
         print(e.toString());
@@ -44,7 +47,9 @@ import 'package:google_sign_in/google_sign_in.dart';
       try{
         UserCredential result=await _auth.createUserWithEmailAndPassword(email: email, password: password);
         User user=result.user;
-        return _userFromFirebaseUser(user);
+        custom_user =  _userFromFirebaseUser(user);
+        custom_user.firstTimeLogin = true;
+        return custom_user;
       }
       catch(e){
         print(e.toString());
@@ -62,9 +67,10 @@ import 'package:google_sign_in/google_sign_in.dart';
           accessToken:googleSignInAuthentication.accessToken
       );
       try{
+
         UserCredential result = await _auth.signInWithCredential(credential);
         User user=result.user;
-        print(result);
+
 
         assert(!user.isAnonymous);
         assert(await user.getIdToken()!=null);
@@ -72,7 +78,14 @@ import 'package:google_sign_in/google_sign_in.dart';
         User currentUser= _auth.currentUser;
         assert(currentUser.uid==user.uid);
 
-        return _userFromFirebaseUser(user);
+        custom_user =  _userFromFirebaseUser(user);
+        if(result.additionalUserInfo.isNewUser)
+        {
+          custom_user.firstTimeLogin = true;
+        }
+        print(result);
+        print(custom_user.firstTimeLogin);
+        return custom_user;
       }
       catch(e){
         print(e.toString());
@@ -86,6 +99,10 @@ import 'package:google_sign_in/google_sign_in.dart';
     //sign out
     Future signOut() async{
       try{
+        if(custom_user.firstTimeLogin==true)
+          {
+            custom_user.firstTimeLogin = false;
+          }
         return await _auth.signOut();
       }
       catch(e){
