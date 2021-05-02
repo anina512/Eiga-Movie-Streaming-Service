@@ -146,7 +146,7 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
 
   Widget _helperImage(MovieDetailsRespo data) {
     return Container(
-      height: expandedHeight + 50,
+      height: expandedHeight + 250,
       width: double.infinity,
       child: Hero(
           tag: tag,
@@ -236,7 +236,7 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Expanded(
-                child: getTxtBlackColor(
+                child: getTxtTitleColor(
                     msg: movieName, fontSize: 24, fontWeight: FontWeight.bold),
               ),
               RatingResult(movie == null ? 0 : movie.voteAverage, 12.0),
@@ -306,7 +306,7 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
           SizedBox(height: 10),
 
           if (movie != null)
-            getTxtGreyColor(
+            getTxtOverviewColor(
                 msg: movie.overview != null ? movie.overview : '',
                 fontSize: 15,
                 fontWeight: FontWeight.w400)

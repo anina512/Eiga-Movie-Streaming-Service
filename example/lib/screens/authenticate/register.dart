@@ -148,7 +148,7 @@ class _RegisterState extends State<Register> {
                                     child: Text("Login",style:TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 16,
-                                      color:kRed,
+                                      color:Colors.white,
 
                                     ),),
 

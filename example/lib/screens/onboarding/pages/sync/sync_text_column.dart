@@ -6,9 +6,9 @@ class CommunityTextColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextColumn(
-      title: 'Stream Together',
+      title: 'Discover Movies',
       text:
-      'Watch your favourite movies together with your friends.',
+      'Explore our collection of the top rated, trending and upcoming movies. Uncover the treasure trove of the various genres and movie info.',
     );
   }
 }

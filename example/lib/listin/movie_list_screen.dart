@@ -193,7 +193,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
             width: 135,
             id: item.id,
             img: item.poster_path,
-            name: item.original_title,
+            name: item.title,
             vote: item.vote_average);
       } else if (apiName == StringConst.PERSON_MOVIE_CAST &&
           data is PersonMovieRespo) {
@@ -206,7 +206,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
             width: 135,
             id: item.id,
             img: item.posterPath,
-            name: item.originalTitle,
+            name: item.title,
             vote: item.voteAverage);
       } else if (apiName == StringConst.PERSON_MOVIE_CREW &&
           data is PersonMovieRespo) {
@@ -219,7 +219,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
             width: 135,
             id: item.id,
             img: item.posterPath,
-            name: item.originalTitle,
+            name: item.title,
             vote: item.voteAverage);
       } else if (apiName == ApiConstant.GENRES_LIST && data is MovieCatRespo) {
         Genres item = data.genres[index];

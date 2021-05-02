@@ -106,11 +106,15 @@ class _FirstPage extends StatelessWidget {
                       width: 280,
                       height: 250, //Adapt.px(500),
                       child: Image.asset('assets/images/popcorn.gif')),
-                  Text( "Moshi Moshi :)",style: TextStyle(fontSize: 30,
+                  Text( "Konnichi wa!",style: TextStyle(fontSize: 30,
                     fontWeight: FontWeight.bold,
                     color:kPink,)),
                   SizedBox(height: 5),
-                  Text( "We would love to know about you.",style: TextStyle(fontSize: 15,
+                  Text( "こんにちわ !",style: TextStyle(fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color:kPink,)),
+                  SizedBox(height: 5),
+                  Text( "We would love to know about you!",style: TextStyle(fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color:kPink,)),
                   SizedBox(height: 20),
@@ -225,7 +229,7 @@ class _SubscribeTopicPageState extends State<_SubscribeTopicPage> {
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: _selected
-                                    ? kPink
+                                    ? Colors.redAccent
                                     : kBlack,
                               ),
                               child: Center(

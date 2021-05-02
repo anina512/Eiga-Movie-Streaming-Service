@@ -42,7 +42,7 @@ class MovieTag extends StatelessWidget {
                 active: false,
                 textStyle: TextStyle(fontSize: 12),
                 elevation: 0,
-                textColor:kRed,
+                textColor:kBlack,
                 border: Border.all(
                   color: kBlack,
                 ),

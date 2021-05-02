@@ -4,6 +4,8 @@ import 'package:flutter_torrent_streamer/flutter_torrent_streamer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_torrent_streamer_example/constant.dart';
 
+import '../../constant.dart';
+
 
 
 class TorrentStreamerView extends StatefulWidget {
@@ -146,7 +148,8 @@ class _TorrentStreamerViewState extends State<TorrentStreamerView> {
               onPressed: _startDownload,
             ),
             SizedBox(width: 20),
-            OutlineButton(
+            RaisedButton(
+              color: kBlack,
               child: Text('Clear Cache'),
               onPressed: () => _cleanDownloads(context),
             ),
@@ -186,7 +189,8 @@ class _TorrentStreamerViewState extends State<TorrentStreamerView> {
                   onPressed: isStreamReady ? () => _openVideo(context) : null
               ),
               SizedBox(width: 20,),
-              OutlineButton(
+              RaisedButton(
+                color: kBlack,
                 child: Text('Stop Download'),
                 onPressed: TorrentStreamer.stop,
               ),
@@ -210,31 +214,34 @@ class _TorrentStreamerViewState extends State<TorrentStreamerView> {
         elevation: 0,
         title: Text('Download'),
       ),
-      body: Card(
-        margin: EdgeInsets.only(top: 30),
-        elevation: 50,
-        shadowColor: Colors.black,
-        color: Colors.redAccent[100],
-        child:SizedBox(
-          width: 500,
-          height: 400,
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Card(
+          margin: EdgeInsets.only(top: 30),
+          elevation: 50,
+          shadowColor: Colors.black,
+          color: Colors.blueGrey[200],
+          child:SizedBox(
+            width: 500,
+            height: 400,
 
-          child: Padding(
-              padding: const EdgeInsets.all(30.0),
+            child: Padding(
+                padding: const EdgeInsets.all(30.0),
 
-            child: Column(
+              child: Column(
 
-            children: <Widget>[
-              Image.asset('assets/images/dmovie.png',height: 50,),
-              Text("Click the Download Button to watch your favourite movie.",style:TextStyle(fontWeight: FontWeight.bold),),
-              SizedBox(height:20,),
-              _buildInput(context),
-              SizedBox(height: 20,),
-              _buildTorrentStatus(context)
-            ],
+              children: <Widget>[
+                Image.asset('assets/images/dmovie.png',height: 50,),
+                Text("Click the Download Button to watch your favourite movie.",style:TextStyle(fontWeight: FontWeight.bold),),
+                SizedBox(height:20,),
+                _buildInput(context),
+                SizedBox(height: 20,),
+                _buildTorrentStatus(context)
+              ],
 
+            ),
           ),
-        ),
+          ),
         ),
       ),
 

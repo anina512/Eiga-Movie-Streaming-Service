@@ -6,6 +6,8 @@ import 'package:flutter_torrent_streamer_example/constant/assets_constant.dart';
 import 'package:flutter_torrent_streamer_example/utils/SlideRoute.dart';
 import 'package:flutter_torrent_streamer_example/utils/apiutils/api_response.dart';
 
+import '../../constant.dart';
+
 void navigationPush(BuildContext context, StatefulWidget route) {
   Navigator.push(context, RouteTransition(widget: route));
 }
@@ -130,7 +132,7 @@ AppBar getAppBarWithBackBtn(
       Widget icon,
       List<Widget> actions}) {
   return AppBar(
-    backgroundColor: Colors.lightBlueAccent,
+    backgroundColor: kRed,
     leading: icon,
     actions: actions,
     centerTitle: true,
@@ -141,7 +143,11 @@ AppBar getAppBarWithBackBtn(
         style: new TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.black,
-            fontSize: fontSize != null ? fontSize : 16),
+            fontSize: fontSize != null ? fontSize : 35,
+            fontFamily: "Pacifico"
+
+        ),
+
       ),
     ),
   );
@@ -177,6 +183,24 @@ Text getTxtAppColor(
         fontWeight: fontWeight),
   );
 }
+Text getTxtTitleColor(
+    {@required String msg,
+      double fontSize,
+      FontWeight fontWeight,
+      int maxLines,
+      TextAlign textAlign}) {
+  return Text(
+    msg,
+    maxLines: maxLines,
+    textAlign: textAlign,
+    style: _getFontStyle(
+        txtColor: kBlack,
+        fontSize: fontSize,
+        fontWeight: fontWeight),
+  );
+}
+
+
 
 Text getTxtWhiteColor(
     {@required String msg,
@@ -206,7 +230,23 @@ Text getTxtBlackColor(
     textAlign: textAlign,
     maxLines: maxLines,
     style: _getFontStyle(
-        txtColor: Colors.white,
+        txtColor: Colors.black,
+        fontSize: fontSize,
+        fontWeight: fontWeight),
+  );
+}
+Text getTxtAsliBlackColor(
+    {@required String msg,
+      double fontSize,
+      FontWeight fontWeight,
+      int maxLines,
+      TextAlign textAlign}) {
+  return Text(
+    msg,
+    textAlign: textAlign,
+    maxLines: maxLines,
+    style: _getFontStyle(
+        txtColor: Colors.black,
         fontSize: fontSize,
         fontWeight: fontWeight),
   );
@@ -224,6 +264,23 @@ Text getTxtGreyColor(
     maxLines: maxLines,
     style: _getFontStyle(
         txtColor: Colors.grey,
+        fontSize: fontSize,
+        fontWeight: fontWeight),
+  );
+}
+
+Text getTxtOverviewColor(
+    {@required String msg,
+      double fontSize,
+      FontWeight fontWeight,
+      int maxLines,
+      TextAlign textAlign}) {
+  return Text(
+    msg,
+    textAlign: textAlign,
+    maxLines: maxLines,
+    style: _getFontStyle(
+        txtColor: Colors.black54,
         fontSize: fontSize,
         fontWeight: fontWeight),
   );

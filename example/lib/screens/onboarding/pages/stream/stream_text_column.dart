@@ -7,7 +7,7 @@ class EducationTextColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextColumn(
       title: 'Watch Movies',
-      text: 'Stream your favourite movies anytime and anywhere.',
+      text: 'Download and Stream your favourite movies, anytime and anywhere.',
     );
   }
 }

@@ -35,6 +35,7 @@ class _MovieLinksState extends State<MovieLinks> {
           final link = linksList[index];
           return Card(
             child: ListTile(
+              tileColor: Colors.blueGrey[100],
               leading: Icon(
                 Icons.movie,
                 color:kRed,),

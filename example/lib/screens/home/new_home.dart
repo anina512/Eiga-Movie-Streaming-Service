@@ -23,6 +23,10 @@ import 'package:flutter_torrent_streamer_example/constant.dart';
 import 'package:flutter_torrent_streamer_example/services/auth.dart';
 import 'package:flutter_torrent_streamer_example/screens/wrapper.dart';
 
+import '../../constant.dart';
+import '../../constant.dart';
+import '../../constant.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -85,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
     var homeIcon = IconButton(
         icon: Icon(
           Icons.sort, //menu
-          color: kWhite,
+          color: kRealBlack,
         ),
         onPressed: () {
           _scaffoldKey.currentState.openDrawer();
@@ -99,21 +103,21 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         backgroundColor: kBlack,
           key: _scaffoldKey,
-          appBar: getAppBarWithBackBtn(
+            appBar: getAppBarWithBackBtn(
               ctx: context,
               title: StringConst.HOME_TITLE,
-              bgColor: kRed,
+              bgColor: kBlack,
             actions: [
           IconButton(
-          icon: Icon(Icons.search_rounded, color: kWhite,), onPressed: () => navigationPush(context, SearchScreen())
+          icon: Icon(Icons.search_rounded, color: kRealBlack,), onPressed: () => navigationPush(context, SearchScreen())
       ),
-              FlatButton.icon(
+              IconButton(
                   onPressed: () async{
                     await _auth.signOut();
                     navigationPushReplacement(context, Login(screenHeight: MediaQuery.of(context).size.height));
                   },
-                  icon: Icon(Icons.person),
-                  label: Text('Logout')),
+                  icon: Icon(Icons.logout  ,color: kRealBlack,),
+              ),
                       ],
               icon: homeIcon,
                   ),

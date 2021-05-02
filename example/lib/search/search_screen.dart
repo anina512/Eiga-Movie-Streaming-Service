@@ -13,6 +13,10 @@ import 'package:flutter_torrent_streamer_example/widgets/rating_result.dart';
 import 'package:flutter_torrent_streamer_example/widgets/trending_movie_row.dart';
 import 'package:scoped_model/scoped_model.dart';
 
+import '../constant.dart';
+import '../constant.dart';
+import '../constant.dart';
+
 class SearchScreen extends StatefulWidget {
   @override
   _SearchScreenState createState() => _SearchScreenState();
@@ -59,6 +63,7 @@ class _SearchScreenState extends State<SearchScreen> {
       //     bgColor: ColorConst.WHITE_BG_COLOR,
       //     titleTag: 'Search mOivie',
       //     icon: homeIcon),
+      backgroundColor: kBlack,
         body: Container(
           child: Column(
             children: [
@@ -66,7 +71,10 @@ class _SearchScreenState extends State<SearchScreen> {
               PreferredSize(
                 child: Container(
                   child: Card(
+                    color: kRed,
                     child: TextField(
+                      style: TextStyle(color: kWhite),
+                      cursorColor: kWhite,
                       onChanged: (String query) {
                         pageSize = 1;
                         query = query;
@@ -75,15 +83,18 @@ class _SearchScreenState extends State<SearchScreen> {
                       },
                       autofocus: true,
                       controller: searchController,
-                      decoration: InputDecoration(
+                      decoration: InputDecoration(                          
                           border: InputBorder.none,
-                          hintText: StringConst.SEARCH_MOVIE,
+                          hintText: "Search Movies",
+                          fillColor: kWhite,
+                          contentPadding: EdgeInsets.fromLTRB(10, 15, 10, 10),
+                          hintStyle: TextStyle(color: Color.fromARGB(150, 255, 255, 255),fontSize: 20,),
                           icon: IconButton(
                               onPressed: () => Navigator.pop(context),
-                              icon: Icon(Icons.arrow_back_ios)),
+                              icon: Icon(Icons.arrow_back_ios), color: kWhite,),
                           suffixIcon: IconButton(
                               onPressed: () => searchController.clear(),
-                              icon: Icon(Icons.close_rounded))),
+                              icon: Icon(Icons.close_rounded,color: kWhite))),
                     ),
                   ),
                 ),

@@ -180,14 +180,16 @@ Widget getMovieItemRow(
               borderRadius: BorderRadius.circular(5),
             ),
           ),
+          SizedBox(height:5),
           Align(
               alignment: Alignment.topLeft,
-              child: getTxtBlackColor(
+              child: getTxtAsliBlackColor(
                   msg: name,
                   maxLines: 1,
                   fontSize: 11,
                   fontWeight: FontWeight.bold,
                   textAlign: TextAlign.start)),
+          SizedBox(height:5),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[

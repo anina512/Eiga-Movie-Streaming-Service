@@ -10,6 +10,10 @@ import 'package:flutter_torrent_streamer_example/extras/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 
+import '../../constant.dart';
+import '../../constant.dart';
+import '../../constant.dart';
+
 class NavDrawer extends StatelessWidget {
   BuildContext _context;
 
@@ -26,7 +30,7 @@ class NavDrawer extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.only(left: 16.0, right: 40),
           decoration: BoxDecoration(
-              color: Colors.white30,
+              color: kPink,
               boxShadow: [BoxShadow(color: Colors.black45)]),
           width: 300,
           child: SafeArea(
@@ -37,7 +41,8 @@ class NavDrawer extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        "Menu", style: TextStyle(letterSpacing: 1.0, fontSize: 20.0, fontWeight: FontWeight.w800),
+
+                        "Menu", style: TextStyle(letterSpacing: 1.0, color:kBlack,fontSize: 25.0, fontWeight: FontWeight.w800),
                       ),
                       SizedBox(width: 125.0),
                       Container(
@@ -45,6 +50,7 @@ class NavDrawer extends StatelessWidget {
                             alignment: Alignment.centerRight,
                             icon: Icon(
                               Icons.close,
+                              color: kBlack,
                             ),
                             onPressed: () => Navigator.of(_context).pop()),
                       ),
@@ -61,10 +67,8 @@ class NavDrawer extends StatelessWidget {
                   _buildDivider(),
                   _buildRow(Icons.movie, "Upcoming Movie"),
                   _buildDivider(),
-                  _buildRow(Icons.info_outline, "About us"),
-                  _buildDivider(),
-                  _buildRow(Icons.exit_to_app, "Exit"),
-                  _buildDivider(),
+
+
                   SizedBox(height: 80),
                 ],
               ),
@@ -89,12 +93,12 @@ class NavDrawer extends StatelessWidget {
         child: Row(children: [
           Icon(
             icon,
-            color: Colors.black54,
+            color: kBlack,
           ),
           SizedBox(width: 10.0),
           getTxtColor(
               msg: title,
-              txtColor: Colors.black54,
+              txtColor: kBlack,
               fontSize: 16,
               fontWeight: FontWeight.w600),
           Spacer(),

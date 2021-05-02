@@ -6,9 +6,9 @@ class WorkTextColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextColumn(
-      title: 'Create Playlists',
+      title: 'Get Recommendations',
       text:
-      'Create playlists of your favourite movies to binge later.',
+      'If you long for movies like the one you watched, fret not! We\'ve got similar, awesome movies just for you! :)',
     );
   }
 }
