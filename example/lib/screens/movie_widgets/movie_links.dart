@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_torrent_streamer_example/constant.dart';
 class MovieLinks extends StatefulWidget {
   @override
@@ -46,6 +47,14 @@ class _MovieLinksState extends State<MovieLinks> {
               onTap: () {
                 print(link['magnet_link']);
                 Navigator.pushNamed(context, '/play-torrent',arguments: {'torrentLink': link["magnet_link"]});
+              },
+              onLongPress: (){
+                Clipboard.setData(ClipboardData(text: link["magnet_link"]));
+                Scaffold.of(context).showSnackBar(SnackBar(
+                  content: Text('Link Copied!'),
+                  duration: Duration(seconds: 2),
+                )
+                );
               },
             ),
           );
