@@ -28,6 +28,8 @@ class ApiResponse<T> {
         statusCode: errCode,
         errorMessage: errMsg,
         errorBody: errBdy == null ? "" : errBdy);
+    print(errBdy);
+    print(errMsg);
     return ApiResponse<T>(
         status: ApiStatus.ERROR, apierror: apiError, data: data);
   }
