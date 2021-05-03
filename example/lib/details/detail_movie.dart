@@ -195,7 +195,7 @@ class _DetailsMovieScreenState extends State<DetailsMovieScreen> {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.black54,
+        color: Color.fromARGB(125, 255, 255, 255),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(35),
           topRight: Radius.circular(25),

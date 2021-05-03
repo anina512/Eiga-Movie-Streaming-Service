@@ -194,7 +194,7 @@ Text getTxtTitleColor(
     maxLines: maxLines,
     textAlign: textAlign,
     style: _getFontStyle(
-        txtColor: kBlack,
+        txtColor: Colors.black,
         fontSize: fontSize,
         fontWeight: fontWeight),
   );
@@ -280,7 +280,7 @@ Text getTxtOverviewColor(
     textAlign: textAlign,
     maxLines: maxLines,
     style: _getFontStyle(
-        txtColor: Colors.black54,
+        txtColor: Colors.black87,
         fontSize: fontSize,
         fontWeight: fontWeight),
   );
