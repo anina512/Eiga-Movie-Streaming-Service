@@ -6,8 +6,6 @@ import 'package:flutter_torrent_streamer_example/shared/loading.dart';
 import 'package:flutter_torrent_streamer_example/constant.dart';
 
 
-
-
 class SignIn extends StatefulWidget {
   final toggleView;
   SignIn({this.toggleView});
@@ -54,9 +52,9 @@ class _SignInState extends State<SignIn> {
                     color:kRed,
                   ),),
                   SizedBox(height:20,),
-                  Text("Welcome back.Login with your credentials",style:
+                  Text("Welcome back! Login with your credentials",style:
                   TextStyle(
-                      fontSize: 15,
+                      fontSize: 16,
                       color: kWhite
                   ),),
                 ],
@@ -72,7 +70,7 @@ class _SignInState extends State<SignIn> {
                               constraints: BoxConstraints(),
                               child: Column(
                                 children: <Widget>[
-                                  SizedBox(height:20,),
+                                  SizedBox(height:10,),
                                   TextFormField(
                                       decoration:textInputDecor.copyWith(hintText: 'Email'),
                                       validator: (val)=>val.isEmpty? 'Enter Email':null,
@@ -91,7 +89,6 @@ class _SignInState extends State<SignIn> {
                                       setState(() {
                                         return password=val;
                                       });
-
                                     },
                                   ),
                                   SizedBox(height: 20),
@@ -103,22 +100,20 @@ class _SignInState extends State<SignIn> {
                                         setState(() {
                                           return loading=true;
                                         });
-
                                         dynamic result=await _auth.signInEmail(email, password);
                                         if(result==null){
                                           setState(() {
-                                            error='Invalid credentials';
+                                            error='Invalid credentials!';
                                             loading=false;
                                           });
                                         }
                                       }
-
                                     },
                                     color: kRed,
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(40)
                                     ),
-                                    child: Text("Login",style:TextStyle(
+                                    child: Text("Login with Email",style:TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 16,
                                       color:kWhite,
@@ -126,20 +121,53 @@ class _SignInState extends State<SignIn> {
                                     ),),
 
                                   ),
-                                  SizedBox(height: 20),
-                                  Text(
-                                    error,
-                                    style: TextStyle(
-                                        color: Colors.red,
-                                        fontSize: 14
+                                  if (error!='')
+                                    SizedBox(height: 10),
+                                    Text(
+                                      error,
+                                      style: TextStyle(
+                                          color: Colors.red,
+                                          fontSize: 20
+                                      ),
                                     ),
+
+
+                                  SizedBox(height: 10),
+                                  Text(
+                                      'OR',
+                                      style: TextStyle(
+                                          color:kWhite,
+                                          fontSize:20,
+                                        )
                                   ),
                                   SizedBox(height: 20),
-                                  Text('Dont have an account ?',style: TextStyle(
+                                  MaterialButton(
+                                    minWidth: double.infinity,
+                                    height: 60,
+                                    onPressed: (){
+                                      Navigator.pushNamed(context, '/authmobile',arguments: 'Login');
+
+                                      //Navigator.pushNamed(context, '/mobile',arguments: 'Login');
+                                    },
+                                    color: kRed,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(40)
+                                    ),
+                                    child: Text("Login with Mobile",style:TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 16,
+                                      color:kWhite,
+
+                                    ),),
+
+                                  ),
+
+                                  SizedBox(height: 30),
+                                  Text('Don\'t have an account ?',style: TextStyle(
                                     color:kWhite,
                                     fontSize:20,
                                   )),
-                                  SizedBox(height: 20),
+                                  SizedBox(height: 10),
                                   MaterialButton(
                                     minWidth: double.infinity,
                                     height: 60,

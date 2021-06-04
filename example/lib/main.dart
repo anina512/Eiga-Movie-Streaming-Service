@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_torrent_streamer/flutter_torrent_streamer.dart';
 import 'package:flutter_torrent_streamer_example/models/user.dart';
+import 'package:flutter_torrent_streamer_example/screens/authenticate/mobile.dart';
 import 'package:flutter_torrent_streamer_example/screens/movie_widgets/movie_detail.dart';
 import 'package:flutter_torrent_streamer_example/screens/movie_widgets/movie_links.dart';
 import 'package:flutter_torrent_streamer_example/screens/torrent/torrent.dart';
@@ -15,6 +16,7 @@ import 'package:flutter_torrent_streamer_example/screens/onboarding/onboarding.d
 import 'package:splashscreen/splashscreen.dart';
 import 'package:flutter_torrent_streamer_example/screens/login/widgets/login_form.dart';
 import 'constant.dart';
+import 'package:flutter_torrent_streamer_example/screens/wrappermobile.dart';
 
 
 void main() async {
@@ -42,6 +44,8 @@ class MyApp extends StatelessWidget {
           '/login':(context) => LoginForm(),
           '/home': (context)=>HomeScreen(),
           '/auth': (context) => Wrapper(),
+          '/mobile':(context) => MobileAuth(),
+          '/authmobile':(context) => WrapperMobile(),
         }
       ),
     );

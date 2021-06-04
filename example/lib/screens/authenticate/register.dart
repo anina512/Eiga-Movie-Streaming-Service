@@ -50,9 +50,9 @@ class _RegisterState extends State<Register> {
                     color:kBlack,
                   ),),
                   SizedBox(height:20,),
-                  Text("Create an account.Its free!",style:
+                  Text("Create an account. It's free!",style:
                   TextStyle(
-                      fontSize: 15,
+                      fontSize: 16,
                       color: kBlack
                   ),),
                 ],
@@ -112,7 +112,7 @@ class _RegisterState extends State<Register> {
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(40)
                                     ),
-                                    child: Text("Sign Up",style:TextStyle(
+                                    child: Text("Sign Up with Email",style:TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 16,
                                       color:kRed,
@@ -121,14 +121,46 @@ class _RegisterState extends State<Register> {
 
                                   ),
 
-                                  SizedBox(height: 20),
-                                  Text(
-                                    error,
-                                    style: TextStyle(
-                                        color: kBlack,
-                                        fontSize: 14
+                                  if (error!='')
+                                    SizedBox(height: 10),
+                                    Text(
+                                      error,
+                                      style: TextStyle(
+                                          color: Colors.red,
+                                          fontSize: 20
+                                      ),
                                     ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                      'OR',
+                                      style: TextStyle(
+                                        color:kBlack,
+                                        fontSize:20,
+                                      )
                                   ),
+                                  SizedBox(height: 20),
+                                  MaterialButton(
+                                    minWidth: double.infinity,
+                                    height: 60,
+                                    onPressed: (){
+                                      Navigator.pushNamed(context, '/authmobile',arguments: 'Sign Up');
+
+                                      //Navigator.pushNamed(context, '/mobile',arguments: 'Sign Up');
+                                    },
+                                    color: kBlack,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(40)
+                                    ),
+                                    child: Text("Sign Up with Mobile",style:TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 16,
+                                      color:kRed,
+
+                                    ),),
+
+                                  ),
+                                  SizedBox(height: 30),
+
                                   Text('Already have an account?',style: TextStyle(
                                     color:kBlack,
                                     fontSize:20,

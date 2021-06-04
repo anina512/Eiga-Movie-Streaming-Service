@@ -24,67 +24,72 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context){
     return loading? Loading(): Container(
 
-          child:Column(
-              children: <Widget>[
-                MaterialButton(
-                  minWidth: double.infinity,
-                  height: 60,
-                  onPressed:()async{
-                    setState(() {
-                      loading=true;
-                    });
-                    dynamic result=await _auth.signInGoogle();
-                    print(result.toString());
-                    if(result==null) {
+          child:Padding(
+            padding:EdgeInsets.symmetric(
+                horizontal:40
+            ),
+            child: Column(
+                children: <Widget>[
+                  MaterialButton(
+                    minWidth: double.infinity,
+                    height: 60,
+                    onPressed:()async{
                       setState(() {
-                        error = 'Invalid credentials';
+                        loading=true;
+                      });
+                      dynamic result=await _auth.signInGoogle();
+                      print(result.toString());
+                      if(result==null) {
+                        setState(() {
+                          error = 'Invalid credentials';
+                          loading=false;
+                        });
+                      }
+                      setState(() {
                         loading=false;
                       });
-                    }
-                    setState(() {
-                      loading=false;
-                    });
-                    Navigator.pushNamed(context, '/auth');
+                      Navigator.pushNamed(context, '/auth');
+                    },
+                    color: kRed,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(40)
+                    ),
+                    child: Text("Continue with Google",style:TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                      color:kWhite,
+
+                    ),),
+                  ),
+                  SizedBox(height: 20),
+
+
+
+                  MaterialButton(
+                    minWidth: double.infinity,
+                    height: 60,
+                    onPressed:  () {
+                  Navigator.pushNamed(context, '/auth');
                   },
-                  color: kRed,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40)
+                    color: kRed,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(40)
+                    ),
+                    child: Text("Login or Create an Eiga Account",style:TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                      color:kWhite,
+
+                    ),),
+
+
+
                   ),
-                  child: Text("Continue with Google",style:TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    color:kWhite,
-
-                  ),),
-
-
-
-                ),
-                SizedBox(height: 20),
-                MaterialButton(
-                  minWidth: double.infinity,
-                  height: 60,
-                  onPressed:  () {
-                Navigator.pushNamed(context, '/auth');
-                },
-                  color: kRed,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40)
-                  ),
-                  child: Text("Login or Create an Eiga Account",style:TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    color:kWhite,
-
-                  ),),
-
-
-
-                ),
 
 
     ],
 
+            ),
           )
 
       );

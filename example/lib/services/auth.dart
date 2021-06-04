@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_torrent_streamer_example/models/user.dart';
+import 'package:flutter_torrent_streamer_example/screens/authenticate/mobile.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 Users custom_user;
@@ -92,10 +93,24 @@ Users custom_user;
         return null;
 
       }
+    }
+    Future mobileAuth(String phoneNumber, String verificationId,String otp) async{
 
+       PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: otp);
+
+
+      try{
+        UserCredential result=await _auth.signInWithCredential(phoneAuthCredential);
+        User user=result.user;
+        custom_user =  _userFromFirebaseUser(user);
+        return custom_user;
+      }
+      catch(e){
+        print(e.toString());
+        return null;
+      }
 
     }
-
     //sign out
     Future signOut() async{
       try{
