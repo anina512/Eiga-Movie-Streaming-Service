@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_torrent_streamer/flutter_torrent_streamer.dart';
 import 'package:flutter_torrent_streamer_example/models/user.dart';
 import 'package:flutter_torrent_streamer_example/screens/authenticate/mobile.dart';
+import 'package:flutter_torrent_streamer_example/screens/authenticate/forgot_password.dart';
+import 'package:flutter_torrent_streamer_example/screens/authenticate/reset_password.dart';
 import 'package:flutter_torrent_streamer_example/screens/movie_widgets/movie_detail.dart';
 import 'package:flutter_torrent_streamer_example/screens/movie_widgets/movie_links.dart';
 import 'package:flutter_torrent_streamer_example/screens/torrent/torrent.dart';
@@ -17,7 +19,7 @@ import 'package:splashscreen/splashscreen.dart';
 import 'package:flutter_torrent_streamer_example/screens/login/widgets/login_form.dart';
 import 'constant.dart';
 import 'package:flutter_torrent_streamer_example/screens/wrappermobile.dart';
-
+import 'package:flutter_torrent_streamer_example/screens/authenticate/verify_otp.dart';
 
 void main() async {
 //  final Directory saveDir = await getExternalStorageDirectory();
@@ -46,6 +48,9 @@ class MyApp extends StatelessWidget {
           '/auth': (context) => Wrapper(),
           '/mobile':(context) => MobileAuth(),
           '/authmobile':(context) => WrapperMobile(),
+          '/forgotpassword':(context) => ForgotPassword(),
+          '/verifyotp': (context) => VerifyOTP(),
+          '/resetpassword': (context) => ResetPassword(),
         }
       ),
     );

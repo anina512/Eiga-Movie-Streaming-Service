@@ -80,7 +80,7 @@ class _SignInState extends State<SignIn> {
                                         });
                                       }
                                   ),
-                                  SizedBox(height: 20),
+                                  SizedBox(height: 10),
                                   TextFormField(
                                     decoration:textInputDecor.copyWith(hintText: 'Password'),
                                     validator: (val)=>val.length<6? 'Enter a password with 6 or more characters':null,
@@ -91,7 +91,17 @@ class _SignInState extends State<SignIn> {
                                       });
                                     },
                                   ),
-                                  SizedBox(height: 20),
+                                  SizedBox(height: 2),
+                                  TextButton(
+                                    style: TextButton.styleFrom(
+                                      textStyle: const TextStyle(fontSize: 12),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, '/forgotpassword');
+                                    },
+                                    child: const Text('Forgot Password?'),
+                                  ),
+                                  const SizedBox(height: 3),
                                   MaterialButton(
                                     minWidth: double.infinity,
                                     height: 60,
@@ -131,8 +141,6 @@ class _SignInState extends State<SignIn> {
                                       ),
                                     ),
 
-
-                                  SizedBox(height: 10),
                                   Text(
                                       'OR',
                                       style: TextStyle(
@@ -140,7 +148,7 @@ class _SignInState extends State<SignIn> {
                                           fontSize:20,
                                         )
                                   ),
-                                  SizedBox(height: 20),
+                                  SizedBox(height: 10),
                                   MaterialButton(
                                     minWidth: double.infinity,
                                     height: 60,
@@ -162,7 +170,7 @@ class _SignInState extends State<SignIn> {
 
                                   ),
 
-                                  SizedBox(height: 30),
+                                  SizedBox(height: 20),
                                   Text('Don\'t have an account ?',style: TextStyle(
                                     color:kWhite,
                                     fontSize:20,
