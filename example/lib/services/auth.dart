@@ -36,6 +36,7 @@ Users custom_user;
         UserCredential result=await _auth.signInWithEmailAndPassword(email: email, password: password);
         User user=result.user;
         custom_user =  _userFromFirebaseUser(user);
+        print("custom_user: "+custom_user.uid);
         return custom_user;
       }
       catch(e){
@@ -97,8 +98,6 @@ Users custom_user;
     Future mobileAuth(String phoneNumber, String verificationId,String otp) async{
 
        PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: otp);
-
-
       try{
         UserCredential result=await _auth.signInWithCredential(phoneAuthCredential);
         User user=result.user;
@@ -109,7 +108,6 @@ Users custom_user;
         print(e.toString());
         return null;
       }
-
     }
     //sign out
     Future signOut() async{
@@ -118,6 +116,8 @@ Users custom_user;
           {
             custom_user.firstTimeLogin = false;
           }
+        print("signed out");
+        print(_auth.signOut().toString());
         return await _auth.signOut();
       }
       catch(e){

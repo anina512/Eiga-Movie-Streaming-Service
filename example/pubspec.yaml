@@ -8,6 +8,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  country_picker: ^1.1.4
+  intl_phone_number_input: ^0.6.0
   cupertino_icons: ^1.0.0
   flutter_spinkit: "^4.1.2"
   google_sign_in: ^4.5.9

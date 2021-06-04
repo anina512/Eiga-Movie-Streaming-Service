@@ -170,15 +170,15 @@ Future<bool> onWillPop(BuildContext context) async {
       builder: (_) {
         return AlertDialog(
           content: getTxtColor(
-              msg: "Are you sure you want to exit this app?", fontSize: 17, txtColor: kBlack),
+              msg: "Are you sure you want to exit this app?", fontSize: 17, txtColor: kRealBlack),
           title: getTxtBlackColor(
               msg: "Warning!", fontSize: 18, fontWeight: FontWeight.bold),
           actions: <Widget>[
             FlatButton(
-                child: getTxtColor(msg: "Yes",fontSize: 17,txtColor: kBlack),
+                child: getTxtColor(msg: "Yes",fontSize: 17,txtColor: kRealBlack),
                 onPressed: () => SystemNavigator.pop()),
             FlatButton(
-                child: getTxtColor(msg: "No",fontSize: 17,txtColor: kBlack),
+                child: getTxtColor(msg: "No",fontSize: 17,txtColor: kRealBlack),
                 onPressed: ()
                 => Navigator.pop(context)),
           ],

@@ -9,6 +9,7 @@ import 'package:flutter_torrent_streamer_example/extras/feedback.dart';
 import 'package:flutter_torrent_streamer_example/extras/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
+import 'package:flutter_torrent_streamer_example/screens/FAQ.dart';
 
 import '../../constant.dart';
 import '../../constant.dart';
@@ -67,7 +68,8 @@ class NavDrawer extends StatelessWidget {
                   _buildDivider(),
                   _buildRow(Icons.movie, "Upcoming Movie"),
                   _buildDivider(),
-
+                  _buildRow(Icons.question_answer, "FAQ"),
+                  _buildDivider(),
 
                   SizedBox(height: 80),
                 ],
@@ -164,6 +166,9 @@ class NavDrawer extends StatelessWidget {
         break;
       case "Feedback":
         return navigationPush(_context, FeedbackScreen());
+      case "FAQ":
+        navigationPush(_context, FAQScreen());
+        break;
       case "Exit":
         onWillPop(_context);
         break;

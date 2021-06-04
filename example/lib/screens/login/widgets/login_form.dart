@@ -57,7 +57,7 @@ class _LoginFormState extends State<LoginForm> {
                     child: Text("Continue with Google",style:TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 16,
-                      color:kWhite,
+                      color:Colors.white,
 
                     ),),
                   ),
@@ -78,7 +78,10 @@ class _LoginFormState extends State<LoginForm> {
                     child: Text("Login or Create an Eiga Account",style:TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 16,
-                      color:kWhite,
+                      color:Colors.white,
+
+
+
 
                     ),),
 

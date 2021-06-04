@@ -6,6 +6,8 @@ import 'package:flutter_torrent_streamer_example/shared/loading.dart';
 import 'package:flutter_torrent_streamer_example/constant.dart';
 import 'package:flutter_torrent_streamer_example/screens/home/new_home.dart';
 import 'package:flutter_torrent_streamer_example/like_movie/movie_like.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:country_picker/country_picker.dart';
 
 
 class MobileAuth extends StatefulWidget {
@@ -18,6 +20,8 @@ class _MobileAuthState extends State<MobileAuth> {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final _formKey= GlobalKey<FormState>();
   bool loading=false;
+  PhoneNumber number = PhoneNumber(isoCode: 'IN');
+
 
   String mobileNumber;
   String verificationId;
@@ -89,6 +93,8 @@ class _MobileAuthState extends State<MobileAuth> {
                                       validator: (val)=>val.isEmpty? 'Enter Mobile Number':null,
                                       onChanged: (val){
                                         setState(() {
+                                          val="+91"+val;
+                                          print(val);
                                           return mobileNumber=val;
                                         });
                                       }
@@ -104,8 +110,6 @@ class _MobileAuthState extends State<MobileAuth> {
                                         await _firebaseAuth.verifyPhoneNumber(
                                             phoneNumber: mobileNumber,
                                             verificationCompleted:(phoneAuthCredential)async{
-
-
                                             },
                                             verificationFailed: (verificationFailed)async{
                                               setState(() {
@@ -118,10 +122,8 @@ class _MobileAuthState extends State<MobileAuth> {
                                                  otp_sent=true;
                                               });
                                               this.verificationId=verificationId;
-
                                             },
                                             codeAutoRetrievalTimeout: (verificationId) async{
-
                                             }
                                         );
 
@@ -131,14 +133,17 @@ class _MobileAuthState extends State<MobileAuth> {
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(40)
                                     ),
-                                    child: Text("Get OTP",style:TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 16,
-                                      color:kWhite,
-
-                                    ),),
+                                    child: Text("Get OTP",
+                                      style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 16,
+                                              color:kWhite,
+                                      ),
+                                    ),
 
                                   ),
+                                  if (error!='')
+                                    SizedBox(height: 20,),
                                   if (error!='')
                                     Text(
                                     error,
@@ -147,6 +152,9 @@ class _MobileAuthState extends State<MobileAuth> {
                                         fontSize: 20
                                     ),
                                   ),
+                                  if (otp_sent==true)
+                                    SizedBox(height: 20,),
+
                                   if (otp_sent==true)
                                     TextFormField(
                                         decoration:textInputDecor.copyWith(hintText: 'Enter OTP'),
@@ -166,7 +174,7 @@ class _MobileAuthState extends State<MobileAuth> {
 
                                         if(_formKey.currentState.validate()){
                                           setState(() {
-                                           // return loading=true;
+                                            return loading=true;
                                           });
                                           dynamic result=await _auth.mobileAuth(mobileNumber,verificationId, otp);
                                           if(result==null){

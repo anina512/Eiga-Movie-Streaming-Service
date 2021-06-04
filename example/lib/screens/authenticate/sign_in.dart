@@ -80,7 +80,7 @@ class _SignInState extends State<SignIn> {
                                         });
                                       }
                                   ),
-                                  SizedBox(height: 10),
+                                  SizedBox(height: 20),
                                   TextFormField(
                                     decoration:textInputDecor.copyWith(hintText: 'Password'),
                                     validator: (val)=>val.length<6? 'Enter a password with 6 or more characters':null,
@@ -111,6 +111,7 @@ class _SignInState extends State<SignIn> {
                                           return loading=true;
                                         });
                                         dynamic result=await _auth.signInEmail(email, password);
+                                        print("got result");
                                         if(result==null){
                                           setState(() {
                                             error='Invalid credentials!';
@@ -126,7 +127,7 @@ class _SignInState extends State<SignIn> {
                                     child: Text("Login with Email",style:TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 16,
-                                      color:kWhite,
+                                      color:Colors.white,
 
                                     ),),
 
@@ -164,7 +165,7 @@ class _SignInState extends State<SignIn> {
                                     child: Text("Login with Mobile",style:TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 16,
-                                      color:kWhite,
+                                      color:Colors.white,
 
                                     ),),
 

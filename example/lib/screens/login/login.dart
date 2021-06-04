@@ -104,7 +104,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
           AnimatedBuilder(
             animation: _whiteTopClipperAnimation,
             child: Container(
-              color: kGrey,
+              color: kRealBlack,
             ),
             builder: (_, Widget child) {
               return ClipPath(
