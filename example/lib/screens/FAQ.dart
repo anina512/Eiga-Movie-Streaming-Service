@@ -14,15 +14,15 @@ class _FAQScreenState extends State<FAQScreen> {
     questions = [
       {
         "id": "1",
-        "question": "Sign In Options",
+        "question": "What is Eiga?",
         "answer":
-        "We support the following SIgn In options:\n1.Google Sign In\n2.Sign up with an Eiga Account"
+        "Eiga is a recommendation cum streaming service that offers a wide variety of movies across various genres. It also offers personalised recommendations based on your search history.\n\nYou can watch as much as you want, just click on the link and your movie will get downloaded.There is always something new to discover,new movies are added every week!"
       },
       {
         "id": "2",
-        "question": "What does the app do?",
+        "question": "Sign In Options",
         "answer":
-        "Eiga is a movie recommendation and streaming application."
+        "We support the following SIgn In options:\n1.Google Sign In\n2.Sign up with an Eiga Account"
       },
       {
         "id": "3",
@@ -38,30 +38,19 @@ class _FAQScreenState extends State<FAQScreen> {
       },
       {
         "id": "5",
-        "question": "",
+        "question": "Where can I watch?",
         "answer":
-        ""
+        "The app is designed for Android platforms.Use downloads to watch while you're on the go and without an internet connection. Once the movie gets downloaded you can watch anywhere, anytime."
       },
       {
         "id": "6",
-        "question": "Security and privacy policy",
+        "question": "What can I watch on Eiga?",
         "answer":
-        "All the messages and media are end to end encrypted and stored in the server. Cypher cannot access the actual message.\nThe keys used for decrypted only on client side and Cypher doesn't have access information to decrypt the messages and files and hence the messages of users are safe."
+        "Eiga has an extensive library of feature films, documentaries, anime,thrillers,top rated movies and more. Watch as much as you want, anytime you want."
       },
+
       {
         "id": "7",
-        "question": "",
-        "answer":
-        ""
-      },
-      {
-        "id": "8",
-        "question": "",
-        "answer":
-        "."
-      },
-      {
-        "id": "9",
         "question": "Contact us",
         "answer": "If you have any query, mail us at eiga.ty@gmail.com"
       }
