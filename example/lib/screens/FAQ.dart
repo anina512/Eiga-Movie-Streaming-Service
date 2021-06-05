@@ -16,13 +16,13 @@ class _FAQScreenState extends State<FAQScreen> {
         "id": "1",
         "question": "What is Eiga?",
         "answer":
-        "Eiga is a recommendation cum streaming service that offers a wide variety of movies across various genres. It also offers personalised recommendations based on your search history.\n\nYou can watch as much as you want, just click on the link and your movie will get downloaded.There is always something new to discover,new movies are added every week!"
+        "\nEiga is a recommendation cum streaming service that offers a wide variety of movies across various genres. It also offers personalised recommendations based on your search history.\n\nYou can watch as much as you want, just click on the link and your movie will get downloaded.There is always something new to discover,new movies are added every week!"
       },
       {
         "id": "2",
         "question": "Sign In Options",
         "answer":
-        "We support the following SIgn In options:\n1.Google Sign In\n2.Sign up with an Eiga Account"
+        "\nWe support the following Sign In options:\n\n1.Google Sign In\n2.Sign up with an Eiga Account using either Email id or Mobile Number"
       },
       {
         "id": "3",
@@ -32,28 +32,35 @@ class _FAQScreenState extends State<FAQScreen> {
       },
       {
         "id": "4",
-        "question": "Where does the movies gets downloaded ?",
+        "question": "Where does the movies get downloaded ?",
         "answer":
-        "The movie gets downloaded in the local storage of your phone."
+        "\nThe movie gets downloaded in the local storage of your phone."
       },
       {
         "id": "5",
-        "question": "Where can I watch?",
+        "question": "Can I get the movie using my own downloader?",
         "answer":
-        "The app is designed for Android platforms.Use downloads to watch while you're on the go and without an internet connection. Once the movie gets downloaded you can watch anywhere, anytime."
+        "\nYes. You can long press any link tab after tapping on the 'Get Links' button to copy the link directly on to their clipboard. Then simply paste the link in your torrent downloader to get your movie."
       },
       {
         "id": "6",
         "question": "What can I watch on Eiga?",
         "answer":
-        "Eiga has an extensive library of feature films, documentaries, anime,thrillers,top rated movies and more. Watch as much as you want, anytime you want."
+        "\nEiga has an extensive library of feature films, documentaries, anime, thrillers, top rated movies and more. Watch as much as you want, anytime you want."
       },
-
       {
         "id": "7",
+        "question": "What if I forget my password?",
+        "answer": "\nFret not. If you have used your Email for signing up and you forget your password then just click on the 'Forgot password' button. You will receive an OTP in your mail, which upon verification will give you the link to change your password. "
+      },
+
+
+      {
+        "id": "8",
         "question": "Contact us",
-        "answer": "If you have any query, mail us at eiga.ty@gmail.com"
-      }
+        "answer": "\nIf you have any query, mail us at eiga.ty@gmail.com"
+      },
+
     ];
   }
 
