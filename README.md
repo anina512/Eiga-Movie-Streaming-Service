@@ -1,16 +1,30 @@
-# Eiga
+</p>
+<h1 align = 'center'>EIGA MOVIE STREAMING SERVICE</h1>
+<br>
 
-A flutter app for streaming movies.
 
-## Getting Started
+<br>
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+</p>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Description ##
+A movie streaming application implemented using Flutter and Firebase that allows you to explore popular movies and genres. The application also enables you to find magnet links and also to stream and download your favorite movies.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Features ##
+1) Explore new movies and genres
+2) Generate and copy magnet links
+3) Stream Movies
+4) Download Movies
+5) Get recommendations
+
+----------------------------------------------------------------------------------------
+
+
+###             Tech stack
+`Backend` : Firebase  <br>
+`Frontend` : Flutter  <br>
+`Languages used` : Dart  <br>
+
+<h3 align="center"><b>Developed with :heart: by <a href="https://github.com/anina512">Anina</a> ,<a href="https://github.com/Laborious-Coder"> Jigyassa</a> and <a href="https://github.com/blurryfca3">Aaditya</a></b></h1>
