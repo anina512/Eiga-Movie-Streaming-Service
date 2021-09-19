@@ -19,6 +19,9 @@ A movie streaming application implemented using Flutter and Firebase that allows
 4) Download Movies
 5) Get recommendations
 
+## Demo link ##
+https://drive.google.com/drive/folders/14P2qN8Z09btLKZNzn8Pg-5axpkcebEuh?usp=sharing
+
 ----------------------------------------------------------------------------------------
 
 
