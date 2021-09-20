@@ -20,7 +20,7 @@ A movie streaming application implemented using Flutter and Firebase that allows
 5) Get recommendations
 
 ## Images ##
-<p float="center">
+<p float="left">
 ![image](https://user-images.githubusercontent.com/57636109/133957690-778b5d09-353e-413f-9ba2-303884fd2918.png) 
 ![image](https://user-images.githubusercontent.com/57636109/133957696-83d783f0-c438-4f8b-8897-639b2dc70c9d.png)
 ![image](https://user-images.githubusercontent.com/57636109/133957704-d559e671-6260-453b-90fe-93531bd56a92.png)
